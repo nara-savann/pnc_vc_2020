@@ -10,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Welcome to Authentication User</h1>
     <form action="<?php echo base_url(''); ?>" method="post">
         <input type="text" name="firstname">
         <input type="text" name="lastname">
