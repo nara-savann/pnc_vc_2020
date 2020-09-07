@@ -33,4 +33,13 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+    public $signin = [
+        'data' =>[
+            'rules'=>'required',
+            'errors'=>[
+                'required'=>'Email or Password incorrect!',
+            ]
+        ]
+    ];
 }

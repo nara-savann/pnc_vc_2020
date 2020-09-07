@@ -48,6 +48,18 @@
 #--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
+# =============================
+# PRODUCTION
+#'hostname' => 'sql309.byetcluster.com',ftpupload.net
+#'username' => '26405919_b',ezyro_26405919
+#'password' => 'M]p2lS)v09',3j1gocia9b
+#'database' => 'ezyro_26405919_9',
+# =============================
+# database.default.hostname = sql309.byetcluster.com
+# database.default.database = ezyro_26405919_kpcprdb
+# database.default.username = 26405919_10
+# database.default.password = pu)!f7HS71
+# database.default.DBDriver = MySQLi
 
 # database.default.hostname = localhost
 # database.default.database = ci4

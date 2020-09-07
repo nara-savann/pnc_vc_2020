@@ -1,5 +1,2 @@
 <?php
-foreach ($user as $user)
-{
-    echo $user;
-}
+echo 'List of user here';
