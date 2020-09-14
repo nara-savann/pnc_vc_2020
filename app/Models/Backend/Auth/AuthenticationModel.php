@@ -58,9 +58,25 @@ class AuthenticationModel extends Model
             ->insert($data);
     }
 
+    /**
+     * @return mixed
+     */
     public function getMigrate()
     {
         return $this->db->table('migrations')
+            ->get()
+            ->getRow();
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function lookup($data)
+    {
+        $table = 'user';
+        return $this->db->table($table)
+            ->where('email', $data['email'])
             ->get()
             ->getRow();
     }

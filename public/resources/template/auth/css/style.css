@@ -1,3 +1,6 @@
+.forget-password{
+  text-decoration-line: none;
+}
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
   display: flex;
@@ -439,6 +442,7 @@ label.valid {
     color: green; }
 
 .label-agree-term {
+  padding-right: 10%;
   position: relative;
   top: 0%;
   transform: translateY(0);

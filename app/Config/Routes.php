@@ -38,6 +38,8 @@ $routes->post('/login', 'Backend/Auth/Authentication::login');
 $routes->get('/register', 'Backend/Auth/Authentication::register');
 $routes->post('/register', 'Backend/Auth/Authentication::register');
 
+$routes->get('/forget', 'Backend/Auth/Authentication::forget');
+$routes->post('/forget', 'Backend/Auth/Authentication::forget');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

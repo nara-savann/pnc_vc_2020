@@ -4,6 +4,9 @@ use App\Models\Backend\Auth\AuthenticationModel;
 
 class Home extends BaseController
 {
+    /**
+     * @return string
+     */
     public function index()
     {
         $query = (new AuthenticationModel())->getMigrate();

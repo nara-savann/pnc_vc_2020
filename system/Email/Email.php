@@ -79,31 +79,31 @@ class Email
 	 *
 	 * @var string 'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol = 'mail';        // mail/sendmail/smtp
+	public $protocol = 'smtp';//'mail';        // mail/sendmail/smtp
 	/**
 	 * STMP Server host
 	 *
 	 * @var string
 	 */
-	public $SMTPHost = '';
+	public $SMTPHost = 'smtp.gmail.com';
 	/**
 	 * SMTP Username
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = '';
+	public $SMTPUser = 'synce.data@gmail.com';
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = '';
+	public $SMTPPass = 'wiwjfdmmouugcdhd';//ksrbypykgzsiacuf
 	/**
 	 * SMTP Server port
 	 *
 	 * @var integer
 	 */
-	public $SMTPPort = 25;
+	public $SMTPPort = 465;
 	/**
 	 * SMTP connection timeout in seconds
 	 *
@@ -121,7 +121,7 @@ class Email
 	 *
 	 * @var string Empty, 'tls' or 'ssl'
 	 */
-	public $SMTPCrypto = '';
+	public $SMTPCrypto = 'ssl';
 	/**
 	 * Whether to apply word-wrapping to the message body.
 	 *

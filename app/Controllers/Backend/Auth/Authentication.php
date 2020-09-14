@@ -88,9 +88,10 @@ class Authentication extends BaseController
                     $this->AuthModel->sessionData($sess);
                     session()->set($sess);
                     return view('welcome_message');
-                } else
+                } else {
                     $this->validate('signin');
-                return view('Backend/Auth/login', ['validation' => $this->validator]);
+                    return view('Backend/Auth/login', ['validation' => $this->validator]);
+                }
             }
             return view('Backend/Auth/login', ['validation' => $this->validator]);
         } else {
@@ -99,6 +100,52 @@ class Authentication extends BaseController
                 return view('welcome_message');
             }
             return view('Backend/Auth/login');
+        }
+    }
+
+    /**
+     * User request reset password vai sending email.
+     * @return string
+     */
+    public function forget()
+    {
+        $method = $this->request->getMethod();
+        $value = $this->request->getVar();
+        if ($method == 'post') {
+            $isValid = $this->validate([
+                'email' => 'required|valid_email',
+            ]);
+            if ($isValid) {
+                $data = [
+                    'email' => $value['email'],
+                ];
+                $result = $this->AuthModel->lookup($data);
+                if ($result != null) {
+                    $mail = \Config\Services::email();
+                    $mail->protocol = 'smtp';
+                    $mail->SMTPHost = 'smtp.gmail.com';
+                    $mail->SMTPPort = 465;
+                    $mail->SMTPPass = 'wiwjfdmmouugcdhd';
+                    $mail->SMTPUser = 'synce.data@gmail.com';
+                    $mail->SMTPCrypto = 'ssl';
+                    $mail->setFrom('synce.data@gmail.com', 'Service Mailer');
+                    $mail->setTo($result->email);
+                    $mail->setSubject('Request Reset Password');
+                    $mail->setMessage('Your request reset password successful');
+                    $send = $mail->send();
+                    if ($send) {
+                        return view('Backend/Auth/login');
+                    } else {
+                        return view('Backend/Auth/forgetpassword');
+                    }
+                } else {
+                    return view('Backend/Auth/forgetpassword');
+                }
+            } else {
+                return view('Backend/Auth/forgetpassword');
+            }
+        } else {
+            return view('Backend/Auth/forgetpassword');
         }
     }
 }
