@@ -30,9 +30,6 @@ $path = base_url('resources/template/auth/'); ?>
                 </div>
 
                 <div class="signin-form">
-                    <?php if (!empty($validation)) {
-                        echo $validation->listErrors();
-                    } ?>
                     <h2 class="form-title">Sign in</h2>
                     <form method="POST" class="register-form" id="login-form"
                           action="<?php echo base_url('/login'); ?>">

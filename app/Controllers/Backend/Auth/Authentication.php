@@ -30,7 +30,7 @@ class Authentication extends BaseController
             $isValid = $this->validate([
                 'first_name' => 'required|alpha',
                 'last_name' => 'required|alpha',
-                'email' => 'required|valid_email|is_unique[users.email, id, 1]',
+                'email' => 'required|valid_email|is_unique[user.email, id, 0]',
                 'pass' => 'required|min_length[8]|max_length[45]',
                 're_pass' => 'required|matches[pass]|min_length[8]|max_length[45]',
                 'agree-term' => 'required',
