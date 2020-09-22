@@ -9,8 +9,6 @@ class Home extends BaseController
      */
     public function index()
     {
-        $query = (new AuthenticationModel())->getMigrate();
-
         $s = session();
         if ($s->get('uid') != '' and $s->get('key') != '' and $s->get('value')) {
             return view('welcome_message');

@@ -40,6 +40,9 @@ $routes->post('/register', 'Backend/Auth/Authentication::register');
 
 $routes->get('/forget', 'Backend/Auth/Authentication::forget');
 $routes->post('/forget', 'Backend/Auth/Authentication::forget');
+
+$routes->get('/new_password/(:any)', 'Backend/Auth/Authentication::password');
+$routes->post('/new_password/(:any)', 'Backend/Auth/Authentication::password');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

@@ -61,11 +61,10 @@ class AuthenticationModel extends Model
     /**
      * @return mixed
      */
-    public function getMigrate()
+    public function resetPassword($data)
     {
-        return $this->db->table('migrations')
-            ->get()
-            ->getRow();
+        $db = \Config\Database::connect();
+        return $db->table('user')->replace($data);
     }
 
     /**

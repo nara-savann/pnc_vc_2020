@@ -121,6 +121,8 @@ class Authentication extends BaseController
                 ];
                 $result = $this->AuthModel->lookup($data);
                 if ($result != null) {
+                    $key = random_string('alnum', 128);
+                    $html_body = '';
                     $mail = \Config\Services::email();
                     $mail->protocol = 'smtp';
                     $mail->SMTPHost = 'smtp.gmail.com';
@@ -128,10 +130,11 @@ class Authentication extends BaseController
                     $mail->SMTPPass = 'wiwjfdmmouugcdhd';
                     $mail->SMTPUser = 'synce.data@gmail.com';
                     $mail->SMTPCrypto = 'ssl';
+                    $mail->setMailType('text');
                     $mail->setFrom('synce.data@gmail.com', 'Service Mailer');
                     $mail->setTo($result->email);
                     $mail->setSubject('Request Reset Password');
-                    $mail->setMessage('Your request reset password successful');
+                    $mail->setAltMessage($html_body);
                     $send = $mail->send();
                     if ($send) {
                         return view('Backend/Auth/login');
@@ -146,6 +149,30 @@ class Authentication extends BaseController
             }
         } else {
             return view('Backend/Auth/forgetpassword');
+        }
+    }
+
+    public function password()
+    {
+        $method = $this->request->getMethod();
+        $value = $this->request->getVar();
+
+        if ($method == 'post') {
+            $key = $this->request->uri->getSegment(2);
+            $isValid = $this->validate([
+                'pass' => 'required|min_length[8]|max_length[45]',
+                're_pass' => 'required|matches[pass]|min_length[8]|max_length[45]',
+            ]);
+            if ($isValid) {
+                $data = [
+                    'id' => 1,
+                    'password' => password_hash($value['pass'], PASSWORD_DEFAULT),
+                ];
+                $result = $this->AuthModel->resetPassword($data);
+                dd($result);
+            }
+        } else {
+            return view('Backend/Auth/password');
         }
     }
 }
